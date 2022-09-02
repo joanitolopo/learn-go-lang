@@ -3,10 +3,9 @@ package main
 import "fmt"
 
 func main() {
-
 	person := map[string]string{
-		"name":    "Eko",
-		"address": "Subang",
+		"name":    "Joanito",
+		"address": "Soe",
 	}
 
 	person["title"] = "Programmer"
@@ -15,14 +14,14 @@ func main() {
 	fmt.Println(person["name"])
 	fmt.Println(person["address"])
 
-	book := make(map[string]string)
-	book["title"] = "Belajar Golang"
-	book["author"] = "Joanito"
-	book["ups"] = "Salah"
+	var book map[string]string = make(map[string]string)
+	book["title"] = "Belajar Go-Lang"
+	book["author"] = "Joan"
+	book["Ups"] = "Salah"
 	fmt.Println(book)
 	fmt.Println(len(book))
 
-	delete(book, "ups")
+	delete(book, "Ups")
 
 	fmt.Println(book)
 	fmt.Println(len(book))
