@@ -1,0 +1,31 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type User struct { // struct user akan digunakan untuk membuat variabel penumpang hasil decode json string
+	FullName string `json:"Name"`
+	Age      int
+}
+
+func main() {
+	// decode data dari array json ke slice/array objek
+
+	var jsonString = `[
+		{"Name": "john wick", "Age":27},
+		{"Name": "ethan hunt", "Age":32}
+	]`
+
+	var data []User
+
+	var err = json.Unmarshal([]byte(jsonString), &data)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println("user 1: ", data[0].FullName)
+	fmt.Println("user 2: ", data[1].FullName)
+}
