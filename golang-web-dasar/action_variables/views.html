@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning html/template Actions</title>
+</head>
+<body>
+    <table>
+        <!-- pipeline output & komentar -->
+        <tr>
+            {{/* example how to use actions */}}
+            <td>{{"Name"}}</td>
+            <td>{{.Name}}</td>
+        </tr>
+
+        <!-- Membuat & menampilkan isi variabel -->
+        <td>Gender</td>
+        {{$gender := .Gender}}
+        <td style="text-transform: capitalize;">
+            {{$gender}}
+        </td>
+
+        <!-- Perulangan -->
+        <tr>
+            <td>Hobbies</td>
+            <td>:
+                {{range $index, $elem := .Hobbies}}
+                    {{$elem}},
+                {{end}}
+            </td>
+        </tr>
+
+        <!-- Pengaksesan properti variabel objek -->
+        <!-- Pengaksesan method caranya juga sama, hanya saya kita bisa buat sebuah method pada struct inf -->        
+        <tr>
+            <td>Affiliation</td>
+            <td>: {{.Info.Affiliation}} ({{.Info.GetAffiliationDetailInfo}})</td>
+        </tr>
+
+        <!-- Menggunakan keyword with untuk mengganti scope variabel pada suatu blok -->
+        {{with .Info}}
+        <tr>
+            <td>Address</td>
+            <td>: {{.Address}}</td>
+        </tr>
+        {{end}}
+
+        <!-- Seleksi kondisi, keyword (if dan eq) -->
+        {{if eq .Name "Bruce Wayne"}}
+        <tr>
+            <td colspan="2", style="font-weight: bold;">
+                I'm the Batman
+            </td>
+        </tr>
+        {{end}}
+    </table>
+    
+</body>
+</html>
